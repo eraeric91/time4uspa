@@ -696,7 +696,9 @@
         });
 
         document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function(e) {
+                // Let the browser handle the tel: link naturally
+                // Remove any JavaScript interference that might trigger security warnings
                 console.log('Phone number clicked');
             });
         });
