@@ -706,24 +706,61 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const address = "785 E 200 S, Ste. 5, Lehi, UT 84043";
+                let fallbackTriggered = false;
+                
+                // Function to handle fallback
+                const handleFallback = () => {
+                    if (!fallbackTriggered) {
+                        fallbackTriggered = true;
+                        window.location.href = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
+                    }
+                };
                 
                 // Try to detect the platform and use appropriate navigation
                 if (navigator.userAgent.includes('iPhone') || navigator.userAgent.includes('iPad')) {
-                    // iOS - try Apple Maps first, fallback to Google Maps
+                    // iOS - try Apple Maps first
+                    const startTime = Date.now();
+                    
+                    // Set up fallback timer
+                    const fallbackTimer = setTimeout(() => {
+                        // Only trigger fallback if page is still visible (app didn't open)
+                        if (!document.hidden && Date.now() - startTime > 2000) {
+                            handleFallback();
+                        }
+                    }, 2500);
+                    
+                    // Cancel fallback if page becomes hidden (app opened)
+                    const visibilityHandler = () => {
+                        if (document.hidden) {
+                            clearTimeout(fallbackTimer);
+                            document.removeEventListener('visibilitychange', visibilityHandler);
+                        }
+                    };
+                    document.addEventListener('visibilitychange', visibilityHandler);
+                    
+                    // Try to open Apple Maps
                     window.location.href = `maps://maps.apple.com/?q=${encodeURIComponent(address)}`;
                     
-                    // Fallback after a short delay if Apple Maps doesn't open
-                    setTimeout(() => {
-                        window.location.href = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
-                    }, 1000);
                 } else if (navigator.userAgent.includes('Android')) {
-                    // Android - use Google Maps intent, fallback to web
+                    // Android - use geo protocol for default maps app
+                    const startTime = Date.now();
+                    
+                    const fallbackTimer = setTimeout(() => {
+                        if (!document.hidden && Date.now() - startTime > 2000) {
+                            handleFallback();
+                        }
+                    }, 2500);
+                    
+                    const visibilityHandler = () => {
+                        if (document.hidden) {
+                            clearTimeout(fallbackTimer);
+                            document.removeEventListener('visibilitychange', visibilityHandler);
+                        }
+                    };
+                    document.addEventListener('visibilitychange', visibilityHandler);
+                    
                     window.location.href = `geo:0,0?q=${encodeURIComponent(address)}`;
                     
-                    // Fallback to Google Maps web if intent doesn't work
-                    setTimeout(() => {
-                        window.location.href = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
-                    }, 1000);
                 } else {
                     // Desktop/other - open Google Maps in new tab
                     window.open(`https://maps.google.com/maps?q=${encodeURIComponent(address)}`, '_blank');
