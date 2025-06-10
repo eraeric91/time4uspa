@@ -67,7 +67,7 @@
         }
 
         .content-wrapper {
-            max-width: 400px;
+            max-width: auto;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -259,7 +259,7 @@
         .service-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 16px;
         }
 
         .service-duration {
@@ -279,8 +279,8 @@
         .services-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 16px;
+            margin-bottom: 0px;
         }
 
         .service-image {
@@ -449,9 +449,9 @@
             .text-sm { font-size: 18px; }
             .text-lg { font-size: 26px; }
             .text-xl { font-size: 28px; }
-            .text-2xl { font-size: 40px; }
+            .text-2xl { font-size: 36px; }
             
-            .hero { padding: 80px 60px; }
+            .hero { padding: 64px 0px; }
             .hero-title { font-size: 40px; margin-bottom: 20px; }
             .hero-subtitle { font-size: 36px; margin-bottom: 25px; }
             .hero-description { 
@@ -481,24 +481,22 @@
                 margin-bottom: 45px; 
             }
             .pricing-grid { 
-                margin: 50px 0; 
-                max-width: 600px; 
+                max-width: 480px; 
                 margin-left: auto; 
                 margin-right: auto; 
             }
-            .card-horizontal { padding: 24px; margin-bottom: 20px; }
+            .card-horizontal { padding: 24px 16px; margin-bottom: 20px; }
             .service-content { padding: 24px; }
             .services-grid { 
                 grid-template-columns: repeat(4, 1fr); 
-                gap: 25px; 
-                margin-bottom: 60px; 
+                gap: 16px; 
             }
             
             .footer-content { 
                 padding: 60px; 
                 display: grid; 
                 grid-template-columns: 1fr 2fr 2fr 1fr; 
-                gap: 50px; 
+                gap: 88px; 
                 text-align: left; 
             }
             .footer-logo-section { 
@@ -511,7 +509,7 @@
                 padding-bottom: 0; 
                 border-bottom: none; 
                 flex-direction: column; 
-                gap: 15px; 
+                gap: 16px; 
             }
             .footer-section h4 { width: 100%; margin-bottom: 10px; }
             .footer-section-content { width: 100%; }
@@ -522,14 +520,14 @@
             .content-wrapper { max-width: 1000px; }
             
             .text-2xl { font-size: 48px; }
-            .hero { padding: 100px 80px; }
-            .hero-title { font-size: 48px; margin-bottom: 24px; }
-            .hero-subtitle { font-size: 42px; margin-bottom: 30px; }
+            .hero { padding: 88px 0px; }
+            .hero-title { font-size: 40px; margin-bottom: 24px; }
+            .hero-subtitle { font-size: 40px; margin-bottom: 24px; }
             .hero-description { font-size: 20px; margin-bottom: 50px; }
             .hero-image { margin: 80px -80px; }
             
             .services-section { padding: 0 80px; }
-            .services-grid { gap: 30px; }
+            .services-grid { gap: 16px; }
             .footer-content { padding: 80px; }
         }
     </style>
@@ -619,7 +617,7 @@
         </section>
 
         <section class="hero">
-            <h3 class="section-title text-lg mb-4">Professional services we offer:</h3>
+            <h3 class="section-title text-xl mb-4">Professional services we offer:</h3>
             <div class="services-grid">
                 <div class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/accupressure.png')"></div>
