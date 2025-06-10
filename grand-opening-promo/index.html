@@ -551,7 +551,7 @@
             <div class="cta-section mb-6">
                 <div class="cta-buttons">
                     <a href="tel:3852776716" class="btn btn-primary">Call or text (385) 277-6716</a>
-                    <a href="https://maps.google.com/?q=785+E+200+S,+Ste.+5,+Lehi,+UT+84043" class="btn btn-secondary">Get directions</a>
+                    <a href="https://maps.apple.com/?q=785+E+200+S,+Ste.+5,+Lehi,+UT+84043" class="btn btn-secondary">Get directions</a>
                 </div>
                 <div class="address text-xs">
                     Located in Lehi Marketplace next to Macey's<br>
@@ -669,7 +669,7 @@
                 <div class="footer-section-content">
                     <div style="margin-bottom: 8px;"><a href="tel:3852776716" class="text-base">Call us</a></div>
                     <div style="margin-bottom: 8px;"><a href="mailto:contact@timespa.com" class="text-base">Email us</a></div>
-                    <div><a href="https://maps.google.com/?q=785+E+200+S,+Ste.+5,+Lehi,+UT+84043" class="text-base">785 E 200 S, Ste. 5<br>Lehi, UT 84043</a></div>
+                    <div><a href="https://maps.apple.com/?q=785+E+200+S,+Ste.+5,+Lehi,+UT+84043" class="text-base">785 E 200 S, Ste. 5<br>Lehi, UT 84043</a></div>
                 </div>
             </div>
             
@@ -698,6 +698,36 @@
         document.querySelectorAll('a[href^="tel:"]').forEach(link => {
             link.addEventListener('click', function() {
                 console.log('Phone number clicked');
+            });
+        });
+
+        // Enhanced navigation link handling for better cross-platform support
+        document.querySelectorAll('a[href*="maps.apple.com"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const address = "785 E 200 S, Ste. 5, Lehi, UT 84043";
+                
+                // Try to detect the platform and use appropriate navigation
+                if (navigator.userAgent.includes('iPhone') || navigator.userAgent.includes('iPad')) {
+                    // iOS - try Apple Maps first, fallback to Google Maps
+                    window.location.href = `maps://maps.apple.com/?q=${encodeURIComponent(address)}`;
+                    
+                    // Fallback after a short delay if Apple Maps doesn't open
+                    setTimeout(() => {
+                        window.location.href = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
+                    }, 1000);
+                } else if (navigator.userAgent.includes('Android')) {
+                    // Android - use Google Maps intent, fallback to web
+                    window.location.href = `geo:0,0?q=${encodeURIComponent(address)}`;
+                    
+                    // Fallback to Google Maps web if intent doesn't work
+                    setTimeout(() => {
+                        window.location.href = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
+                    }, 1000);
+                } else {
+                    // Desktop/other - open Google Maps in new tab
+                    window.open(`https://maps.google.com/maps?q=${encodeURIComponent(address)}`, '_blank');
+                }
             });
         });
     </script>
