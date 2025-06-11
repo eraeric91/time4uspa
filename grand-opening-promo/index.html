@@ -140,6 +140,34 @@
             flex-shrink: 0;
         }
 
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-call {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 120px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .btn-text {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            border-radius: 120px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            width: auto;
+            flex-shrink: 0;
+        }
+
         /* Card System */
         .card {
             background: var(--color-white);
@@ -154,6 +182,14 @@
             align-items: center;
             padding: 16px;
             margin-bottom: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-horizontal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .card-vertical {
@@ -212,18 +248,32 @@
         .hero-description {
             color: var(--color-black);
             margin-bottom: 25px;
+            font-size: 20px;
+            font-weight: 500;
         }
 
         .cta-buttons {
             display: flex;
             flex-direction: column;
+            gap: 0px;
+        }
+
+        .call-text-buttons {
+            display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .address {
-            color: var(--color-secondary);
+            color: var(--color-black);
             line-height: 1.4;
+            font-size: 16px;
+        }
+
+        .address-link {
+            color: var(--color-primary);
+            text-decoration: underline;
+            font-weight: 600;
         }
 
         .hero-image {
@@ -271,9 +321,22 @@
             font-weight: 400;
         }
 
+        .service-price-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .service-price {
             color: var(--color-primary);
             font-weight: 500;
+            font-size: 16px;
+        }
+
+        .chevron {
+            color: var(--color-secondary);
+            font-size: 24px;
+            line-height: 1;
         }
 
         .services-grid {
@@ -398,6 +461,8 @@
         /* Responsive Breakpoints */
         @media (max-width: 360px) {
             .container { max-width: 100%; }
+            .header-buttons { flex-direction: column; gap: 4px; }
+            .btn-call, .btn-text { font-size: 12px; padding: 8px 12px; }
         }
 
         @media (min-width: 768px) {
@@ -414,12 +479,17 @@
             .hero { padding: 60px 40px; }
             .hero-title { font-size: 32px; margin-bottom: 16px; }
             .hero-subtitle { font-size: 28px; margin-bottom: 20px; }
-            .hero-description { font-size: 16px; margin-bottom: 35px; }
+            .hero-description { font-size: 22px; margin-bottom: 35px; }
             .hero-image { margin: 40px -40px; }
             
             .cta-buttons { 
-                flex-direction: row; 
-                gap: 15px; 
+                flex-direction: column; 
+                gap: 0px; 
+            }
+            .call-text-buttons {
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 16px;
             }
             .btn-primary, .btn-secondary { 
                 width: auto; 
@@ -432,7 +502,7 @@
             .pricing-grid { margin: 40px 0; }
             .card-horizontal { padding: 20px; margin-bottom: 16px; }
             .service-content { padding: 20px; }
-            .services-grid { gap: 20px; margin-bottom: 40px; }
+            .services-grid { gap: 20px; margin-bottom: 40px; grid-template-columns: repeat(3, 1fr); }
             
             .footer-content { padding: 40px; }
             .footer-logo { width: 140px; margin-bottom: 15px; }
@@ -455,7 +525,7 @@
             .hero-title { font-size: 40px; margin-bottom: 20px; }
             .hero-subtitle { font-size: 36px; margin-bottom: 25px; }
             .hero-description { 
-                font-size: 18px; 
+                font-size: 24px; 
                 margin-bottom: 45px; 
                 max-width: 600px; 
                 margin-left: auto; 
@@ -488,7 +558,7 @@
             .card-horizontal { padding: 24px 16px; margin-bottom: 20px; }
             .service-content { padding: 24px; }
             .services-grid { 
-                grid-template-columns: repeat(4, 1fr); 
+                grid-template-columns: repeat(3, 1fr); 
                 gap: 16px; 
             }
             
@@ -523,7 +593,7 @@
             .hero { padding: 88px 0px; }
             .hero-title { font-size: 40px; margin-bottom: 24px; }
             .hero-subtitle { font-size: 40px; margin-bottom: 24px; }
-            .hero-description { font-size: 20px; margin-bottom: 50px; }
+            .hero-description { font-size: 26px; margin-bottom: 50px; }
             .hero-image { margin: 80px -80px; }
             
             .services-section { padding: 0 80px; }
@@ -538,7 +608,10 @@
         <header class="header full-width">
             <div class="content-wrapper p-3 px-4">
                 <img src="assets/logo-green.png" alt="Time Spa" class="logo">
-                <a href="tel:3852776716" class="btn btn-primary btn-small">Call or text (385) 277-6716</a>
+                <div class="header-buttons">
+                    <a href="tel:3852776716" class="btn btn-call">Call (385) 277-6716</a>
+                    <a href="sms:3852776716" class="btn btn-text">Text</a>
+                </div>
             </div>
         </header>
         
@@ -557,12 +630,15 @@
 
             <div class="cta-section mb-6">
                 <div class="cta-buttons">
-                    <a href="tel:3852776716" class="btn btn-primary">Call or text (385) 277-6716</a>
-                    <a href="https://maps.apple.com/?q=785+E+200+S,+Ste.+5,+Lehi,+UT+84043" class="btn btn-secondary">Get directions</a>
+                    <div class="call-text-buttons">
+                        <a href="tel:3852776716" class="btn btn-primary">Call (385) 277-6716</a>
+                        <a href="sms:3852776716" class="btn btn-secondary">Text us</a>
+                    </div>
+                    <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="btn btn-secondary">Book online</a>
                 </div>
-                <div class="address text-xs">
+                <div class="address text-sm">
                     Located in Lehi Marketplace next to Macey's<br>
-                    785 E 200 S, Lehi UT 84043
+                    <a href="#" class="address-link" onclick="openMaps(event)">785 E 200 S, Lehi UT 84043</a>
                 </div>
             </div>
 
@@ -574,50 +650,53 @@
         <!-- Services Section -->
         <section class="services-section">
             <h3 class="section-title text-xl mb-3">Special launch pricing for our Lehi grand opening</h3>
+
+            <div class="pricing-grid">
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-horizontal">
+                    <div class="service-info">
+                        <div class="service-duration text-base">30 min massage</div>
+                    </div>
+                    <div class="service-price-container">
+                        <div class="service-price text-lg">$50</div>
+                        <div class="chevron">›</div>
+                    </div>
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-horizontal">
+                    <div class="service-info">
+                        <div class="service-duration text-base">60 min massage</div>
+                    </div>
+                    <div class="service-price-container">
+                        <div class="service-price text-lg">$80</div>
+                        <div class="chevron">›</div>
+                    </div>
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-horizontal">
+                    <div class="service-info">
+                        <div class="service-duration text-base">90 min massage</div>
+                    </div>
+                    <div class="service-price-container">
+                        <div class="service-price text-lg">$120</div>
+                        <div class="chevron">›</div>
+                    </div>
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-horizontal">
+                    <div class="service-info">
+                        <div class="service-duration text-base">120 min massage</div>
+                    </div>
+                    <div class="service-price-container">
+                        <div class="service-price text-lg">$160</div>
+                        <div class="chevron">›</div>
+                    </div>
+                </a>
+            </div>
+            
             <p class="section-description text-sm">
                 Your therapist will blend techniques like Swedish, deep tissue, cupping, trigger point therapy, Himalayan salt stone, aromatherapy, and hot stones to relieve tension, reduce stress, and promote overall wellness.
             </p>
-
-            <div class="pricing-grid">
-                <div class="card card-horizontal">
-                    <div class="service-info">
-                        <div class="service-duration text-base">30 min</div>
-                        <div class="service-name text-sm">Massage</div>
-                    </div>
-                    <div class="service-price text-lg">$50</div>
-                </div>
-                <div class="card card-horizontal">
-                    <div class="service-info">
-                        <div class="service-duration text-base">60 min</div>
-                        <div class="service-name text-sm">Massage</div>
-                    </div>
-                    <div class="service-price text-lg">$80</div>
-                </div>
-                <div class="card card-horizontal">
-                    <div class="service-info">
-                        <div class="service-duration text-base">90 min</div>
-                        <div class="service-name text-sm">Massage</div>
-                    </div>
-                    <div class="service-price text-lg">$120</div>
-                </div>
-                <div class="card card-horizontal">
-                    <div class="service-info">
-                        <div class="service-duration text-base">120 min</div>
-                        <div class="service-name text-sm">Massage</div>
-                    </div>
-                    <div class="service-price text-lg">$160</div>
-                </div>
-                <div class="card card-horizontal">
-                    <div class="service-info">
-                        <div class="service-duration text-sm">Add CBD oil</div>
-                    </div>
-                    <div class="service-price text-lg">$20</div>
-                </div>
-            </div>
         </section>
 
         <section class="hero">
-            <h3 class="section-title text-xl mb-4">Professional services we offer:</h3>
+            <h3 class="section-title text-xl mb-6">Professional services we offer:</h3>
             <div class="services-grid">
                 <div class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/accupressure.png')"></div>
@@ -634,6 +713,13 @@
                     </div>
                 </div>
                 <div class="card card-vertical">
+                    <div class="service-image" style="background-image: url('assets/images/ashiatsu.png')"></div>
+                    <div class="service-content">
+                        <div class="service-title text-sm">Ashiatsu</div>
+                        <div class="service-desc text-xs">Deep tissue massage using barefoot pressure techniques</div>
+                    </div>
+                </div>
+                <div class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/cupping-therapy.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Cupping therapy</div>
@@ -641,17 +727,23 @@
                     </div>
                 </div>
                 <div class="card card-vertical">
-                    <div class="service-image" style="background-image: url('assets/images/ashiatsu.png')"></div>
+                    <div class="service-image" style="background-image: url('assets/images/facial.png')"></div>
                     <div class="service-content">
-                        <div class="service-title text-sm">Ashiatsu</div>
-                        <div class="service-desc text-xs">Deep tissue massage using barefoot pressure techniques</div>
+                        <div class="service-title text-sm">Facial</div>
+                        <div class="service-desc text-xs">Customized skincare treatment to cleanse, nourish and rejuvenate</div>
+                    </div>
+                </div>
+                <div class="card card-vertical">
+                    <div class="service-image" style="background-image: url('assets/images/body-scrub.png')"></div>
+                    <div class="service-content">
+                        <div class="service-title text-sm">Body scrub</div>
+                        <div class="service-desc text-xs">Exfoliating treatment to remove dead skin and reveal smooth, glowing skin</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        </section>
     </div>
 
     <footer class="footer">
@@ -709,6 +801,71 @@
                 console.log('Phone number clicked');
             });
         });
+
+        // Function to open maps
+        function openMaps(e) {
+            e.preventDefault();
+            const address = "785 E 200 S, Ste. 5, Lehi, UT 84043";
+            let fallbackTriggered = false;
+            
+            // Function to handle fallback
+            const handleFallback = () => {
+                if (!fallbackTriggered) {
+                    fallbackTriggered = true;
+                    window.location.href = `https://maps.google.com/maps?q=${encodeURIComponent(address)}`;
+                }
+            };
+            
+            // Try to detect the platform and use appropriate navigation
+            if (navigator.userAgent.includes('iPhone') || navigator.userAgent.includes('iPad')) {
+                // iOS - try Apple Maps first
+                const startTime = Date.now();
+                
+                // Set up fallback timer
+                const fallbackTimer = setTimeout(() => {
+                    // Only trigger fallback if page is still visible (app didn't open)
+                    if (!document.hidden && Date.now() - startTime > 2000) {
+                        handleFallback();
+                    }
+                }, 2500);
+                
+                // Cancel fallback if page becomes hidden (app opened)
+                const visibilityHandler = () => {
+                    if (document.hidden) {
+                        clearTimeout(fallbackTimer);
+                        document.removeEventListener('visibilitychange', visibilityHandler);
+                    }
+                };
+                document.addEventListener('visibilitychange', visibilityHandler);
+                
+                // Try to open Apple Maps
+                window.location.href = `maps://maps.apple.com/?q=${encodeURIComponent(address)}`;
+                
+            } else if (navigator.userAgent.includes('Android')) {
+                // Android - use geo protocol for default maps app
+                const startTime = Date.now();
+                
+                const fallbackTimer = setTimeout(() => {
+                    if (!document.hidden && Date.now() - startTime > 2000) {
+                        handleFallback();
+                    }
+                }, 2500);
+                
+                const visibilityHandler = () => {
+                    if (document.hidden) {
+                        clearTimeout(fallbackTimer);
+                        document.removeEventListener('visibilitychange', visibilityHandler);
+                    }
+                };
+                document.addEventListener('visibilitychange', visibilityHandler);
+                
+                window.location.href = `geo:0,0?q=${encodeURIComponent(address)}`;
+                
+            } else {
+                // Desktop/other - open Google Maps in new tab
+                window.open(`https://maps.google.com/maps?q=${encodeURIComponent(address)}`, '_blank');
+            }
+        }
 
         // Enhanced navigation link handling for better cross-platform support
         document.querySelectorAll('a[href*="maps.apple.com"]').forEach(link => {
