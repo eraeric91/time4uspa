@@ -214,9 +214,12 @@
         .header {
             background: var(--color-white);
             position: sticky;
+            position: -webkit-sticky; /* Safari support */
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow-header);
+            width: 100vw; /* Ensure full width */
+            left: 0; /* Ensure it starts from the left edge */
         }
 
         .header-inner {
