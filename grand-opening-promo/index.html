@@ -195,6 +195,14 @@
         .card-vertical {
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-vertical:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         /* Header */
@@ -256,6 +264,7 @@
             display: flex;
             flex-direction: column;
             gap: 0px;
+            margin-bottom: 25px;
         }
 
         .call-text-buttons {
@@ -621,8 +630,7 @@
 
         <!-- Main Content -->
         <main class="hero">
-            <h1 class="hero-title text-2xl">Lehi grand opening sale:</h1>
-            <h2 class="hero-subtitle text-2xl">Get 25% off all services</h2>
+            <h1 class="hero-title text-2xl">Lehi grand opening sale: Get 25% off all services</h1>
             <p class="hero-description text-sm">
                 Professional massage & expert esthetics<br>
                 tailored to your needs and goals
@@ -698,49 +706,51 @@
         <section class="hero">
             <h3 class="section-title text-xl mb-6">Professional services we offer:</h3>
             <div class="services-grid">
-                <div class="card card-vertical">
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/accupressure.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Accupressure</div>
                         <div class="service-desc text-xs">Ancient pressure point therapy for pain relief and wellness</div>
                     </div>
-                </div>
-                <div class="card card-vertical">
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/gua-sha.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Gua Sha</div>
                         <div class="service-desc text-xs">Traditional scraping technique to improve circulation</div>
                     </div>
-                </div>
-                <div class="card card-vertical">
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/ashiatsu.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Ashiatsu</div>
                         <div class="service-desc text-xs">Deep tissue massage using barefoot pressure techniques</div>
                     </div>
-                </div>
-                <div class="card card-vertical">
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/cupping-therapy.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Cupping therapy</div>
                         <div class="service-desc text-xs">Therapeutic technique to release muscle tension</div>
                     </div>
-                </div>
-                <div class="card card-vertical">
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/facial.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Facial</div>
                         <div class="service-desc text-xs">Customized skincare treatment to cleanse, nourish and rejuvenate</div>
                     </div>
-                </div>
-                <div class="card card-vertical">
+                </a>
+                <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="card card-vertical">
                     <div class="service-image" style="background-image: url('assets/images/body-scrub.png')"></div>
                     <div class="service-content">
                         <div class="service-title text-sm">Body scrub</div>
                         <div class="service-desc text-xs">Exfoliating treatment to remove dead skin and reveal smooth, glowing skin</div>
                     </div>
-                </div>
+                </a>
             </div>
+            
+            <a href="https://www.fresha.com/a/time-4-u-spa-lehi-785-east-200-south-suite-05-tcqgp9ve/all-offer?menu=true" class="btn btn-secondary" style="max-width: 280px; margin: 30px auto 0 auto;">View all services</a>
         </section>
 
         <!-- Footer -->
