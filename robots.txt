@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://time4uspa.com/sitemap.xml
+
+# Optional: Block access to admin/private areas if you have any
+# Disallow: /admin/
+# Disallow: /private/
